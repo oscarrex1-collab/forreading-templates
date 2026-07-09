@@ -14,6 +14,8 @@ import subprocess
 import tempfile
 import os
 
+import re
+
 HOST = '127.0.0.1'
 PORT = 5525
 
@@ -55,6 +57,9 @@ VOICE_NAMES = {v['name'] for v in VOICES}
 ready = True  # Piper is stateless, always ready
 
 def synthesize(text, voice_name):
+    # Validate voice_name against allowed pattern (defense-in-depth)
+    if not re.match(r'^[a-zA-Z0-9_-]+$', voice_name):
+        voice_name = 'en_US-lessac-medium'
     if voice_name not in VOICE_NAMES:
         voice_name = 'en_US-lessac-medium'
     with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as tmp:

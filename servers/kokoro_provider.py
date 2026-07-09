@@ -155,7 +155,17 @@ class KokoroHandler(http.server.BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.end_headers()
 
+    def _check_origin(self):
+        origin = self.headers.get('Origin', '')
+        if not origin:
+            return True
+        if origin.startswith('chrome-extension://') or origin.startswith('moz-extension://'):
+            return True
+        self._send_json(403, {'error': 'origin not allowed'})
+        return False
+
     def do_GET(self):
+        if not self._check_origin(): return
         if self.path == '/kokoro/health':
             self._send_json(200, {'provider': 'kokoro', 'ok': ready, 'voices_count': len(ALL_VOICES), 'device': device})
         elif self.path == '/kokoro/voices':
@@ -165,6 +175,7 @@ class KokoroHandler(http.server.BaseHTTPRequestHandler):
             self._send_json(404, {'error': 'not found'})
 
     def do_POST(self):
+        if not self._check_origin(): return
         if self.path == '/kokoro/synthesize':
             try:
                 body = self._read_body()
