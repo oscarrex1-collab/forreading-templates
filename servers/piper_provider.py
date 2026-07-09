@@ -72,6 +72,15 @@ def synthesize(text, voice_name):
 class PiperHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, fmt, *args): pass
 
+    def _check_origin(self):
+        origin = self.headers.get('Origin', '')
+        if not origin:
+            return True
+        if origin.startswith('chrome-extension://') or origin.startswith('moz-extension://'):
+            return True
+        self._send_json(403, {'error': 'origin not allowed'})
+        return False
+
     def _send_json(self, code, obj):
         body = json.dumps(obj, ensure_ascii=False).encode('utf-8')
         self.send_response(code)
@@ -93,6 +102,7 @@ class PiperHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        if not self._check_origin(): return
         if self.path == '/piper/health':
             self._send_json(200, {'provider': 'piper', 'ok': ready, 'voices_count': len(VOICES)})
         elif self.path == '/piper/voices':
@@ -106,6 +116,7 @@ class PiperHandler(http.server.BaseHTTPRequestHandler):
             self._send_json(404, {'error': 'not found'})
 
     def do_POST(self):
+        if not self._check_origin(): return
         if self.path == '/piper/synthesize':
             try:
                 body = self._read_body()

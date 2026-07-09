@@ -99,6 +99,15 @@ class TTSHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass  # silent
 
+    def _check_origin(self):
+        origin = self.headers.get('Origin', '')
+        if not origin:
+            return True
+        if origin.startswith('chrome-extension://') or origin.startswith('moz-extension://'):
+            return True
+        self._send_json(403, {'error': 'origin not allowed'})
+        return False
+
     def _send_json(self, code, obj):
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
@@ -122,6 +131,7 @@ class TTSHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        if not self._check_origin(): return
         health_path = f"/{PROVIDER_NAME}/health"
         voices_path = f"/{PROVIDER_NAME}/voices"
 
@@ -142,6 +152,7 @@ class TTSHandler(http.server.BaseHTTPRequestHandler):
             self._send_json(404, {"error": "not found"})
 
     def do_POST(self):
+        if not self._check_origin(): return
         synth_path = f"/{PROVIDER_NAME}/synthesize"
         if self.path == synth_path:
             try:
