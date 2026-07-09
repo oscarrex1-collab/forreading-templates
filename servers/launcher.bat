@@ -44,6 +44,14 @@ REM start "CosyVoice :5522" /MIN python "%SCRIPT_DIR%cosyvoice_provider.py"
 
 echo.
 echo ========================================
+echo   All providers and ports:
+echo     Edge     :5521  (free, no GPU, no setup)
+echo     Piper    :5525  (100+ voices, CPU)
+echo     MeloTTS  :5526  (6 languages, CPU)
+echo     Kokoro   :5520  (GPU, 44 voices EN+ZH+JA)
+echo     XTTS     :5527  (GPU, 17 languages, cloning)
+echo     CosyVoice:5522  (GPU, Chinese premium)
+echo.
 echo   To add your own: copy _TEMPLATE_provider.py
 echo   and edit the voice list + synthesize()
 echo ========================================
