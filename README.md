@@ -43,8 +43,12 @@ python servers/edge_provider.py
 ## Contributing
 
 1. Fork this repo
-2. Create your template following [`schema.json`](schema.json)
-3. Open a PR with a clear description
+2. Copy [`servers/_TEMPLATE_provider.py`](servers/_TEMPLATE_provider.py) and [`local/_TEMPLATE.json`](local/_TEMPLATE.json)
+3. Replace `synthesize()` with your model's inference code
+4. Edit `VOICES` to list your voices
+5. Open a PR with a clear description
+
+Your provider works automatically: the extension health-checks `http://127.0.0.1:<port>/<name>/health` every 30 seconds.
 
 ## Templates (17)
 
