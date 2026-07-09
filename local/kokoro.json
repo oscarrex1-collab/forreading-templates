@@ -2,20 +2,18 @@
   "name": "kokoro",
   "type": "local",
   "displayName": "Kokoro TTS",
-  "description": "High-quality neural TTS with 50+ voices. GPU (CUDA) recommended for real-time synthesis. Open-source, free forever.",
+  "description": "High-quality neural TTS with 44 voices in English, Chinese, and Japanese. GPU recommended (CUDA). Open-source, free forever.",
   "port": 5520,
   "setup": {
     "python": "3.11",
     "gpu": true,
     "commands": [
-      "python -m venv venv-kokoro",
-      "venv-kokoro\\Scripts\\pip install kokoro",
-      "venv-kokoro\\Scripts\\pip install flask",
-      "venv-kokoro\\Scripts\\python server/kokoro_provider.py"
+      "pip install kokoro torch",
+      "python servers/kokoro_provider.py"
     ],
-    "docs": "https://github.com/your-org/forreading-templates/blob/main/local/kokoro.md"
+    "docs": "https://github.com/oscarrex1-collab/forreading-templates/blob/main/servers/kokoro_provider.py"
   },
-  "tags": ["gpu", "neural", "english", "chinese", "japanese", "french", "korean", "open-source"],
-  "author": "ForReading",
-  "version": "1.0.0"
+  "tags": ["gpu", "neural", "english", "chinese", "japanese", "open-source"],
+  "author": "ForReading Community",
+  "version": "2.0.0"
 }

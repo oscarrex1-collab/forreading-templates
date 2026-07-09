@@ -25,8 +25,20 @@ External APIs (ElevenLabs, OpenAI, etc.). Configure via **Options → Custom Tem
 ## How to use
 
 1. Browse [`local/`](local/) or [`cloud/`](cloud/)
-2. **Local**: copy the `.json` to your `server/` folder. Start sidecars with `server/launcher.bat`
+2. **Local**: grab the provider script from [`servers/`](servers/), install deps, run with `launcher.bat`
 3. **Cloud**: open Options in the extension → **+ Add template** → paste the JSON fields
+
+## Quick start
+
+```bash
+# 1. Install Edge TTS (free, no GPU)
+pip install edge-tts
+
+# 2. Run
+python servers/edge_provider.py
+
+# 3. Open the extension → Options → Edge TTS appears automatically
+```
 
 ## Contributing
 
