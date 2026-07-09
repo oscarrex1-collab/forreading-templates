@@ -1,0 +1,25 @@
+{
+  "name": "openai-tts",
+  "type": "cloud",
+  "displayName": "OpenAI TTS",
+  "description": "OpenAI's text-to-speech API (GPT-4o-mini-tts). 6 natural voices. $15/1M chars.",
+  "urls": {
+    "synthesize": "https://api.openai.com/v1/audio/speech",
+    "voices": null
+  },
+  "auth": {
+    "type": "bearer",
+    "header": "Authorization"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"model\":\"gpt-4o-mini-tts\",\"input\":\"{text}\",\"voice\":\"{voice}\",\"response_format\":\"mp3\"}"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 30000,
+  "tags": ["premium", "english-only", "natural"],
+  "pricing": "https://openai.com/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

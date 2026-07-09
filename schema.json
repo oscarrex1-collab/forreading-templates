@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ForReading Template Schema",
+  "description": "Schema for ForReading community TTS templates. Use this to validate your template before submitting.",
+  "oneOf": [
+    { "$ref": "#/$defs/local" },
+    { "$ref": "#/$defs/cloud" }
+  ],
+  "$defs": {
+    "local": {
+      "type": "object",
+      "required": ["name", "type", "displayName", "description", "port"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z0-9_-]+$", "description": "Unique provider ID" },
+        "type": { "const": "local", "description": "Local sidecar running on user's machine" },
+        "displayName": { "type": "string", "description": "Human-readable name" },
+        "description": { "type": "string" },
+        "port": { "type": "integer", "minimum": 1024, "maximum": 65535 },
+        "setup": {
+          "type": "object",
+          "properties": {
+            "python": { "type": "string", "description": "Python version required" },
+            "commands": { "type": "array", "items": { "type": "string" } },
+            "gpu": { "type": "boolean", "description": "Whether GPU is required" },
+            "docs": { "type": "string", "description": "Link to setup guide" }
+          }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "author": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "cloud": {
+      "type": "object",
+      "required": ["name", "type", "displayName", "description", "urls"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+        "type": { "const": "cloud" },
+        "displayName": { "type": "string" },
+        "description": { "type": "string" },
+        "urls": {
+          "type": "object",
+          "required": ["synthesize"],
+          "properties": {
+            "synthesize": { "type": "string", "format": "uri" },
+            "voices": { "type": "string", "format": "uri" }
+          }
+        },
+        "auth": {
+          "type": "object",
+          "properties": {
+            "type": { "enum": ["none", "bearer", "api-key"] },
+            "header": { "type": "string" }
+          }
+        },
+        "timeout": { "type": "integer", "minimum": 5000, "maximum": 120000, "default": 20000 },
+        "requestFormat": {
+          "type": "object",
+          "description": "How to format the synthesis request. Variables: {text}, {voice}, {rate}",
+          "properties": {
+            "bodyTemplate": { "type": "string" },
+            "voiceParam": { "type": "string", "description": "How to extract voice from voice ID" }
+          }
+        },
+        "responseFormat": {
+          "type": "object",
+          "description": "How to parse the response",
+          "properties": {
+            "audioField": { "type": "string", "description": "JSON path to audio (for JSON APIs)" }
+          }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "pricing": { "type": "string", "description": "Link to pricing page" },
+        "author": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    }
+  }
+}

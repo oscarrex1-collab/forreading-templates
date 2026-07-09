@@ -1,0 +1,20 @@
+{
+  "name": "edge-tts",
+  "type": "local",
+  "displayName": "Edge TTS",
+  "description": "Microsoft Edge's free TTS engine. No GPU, no API key needed. 300+ voices in 100+ languages. Perfect for beginners.",
+  "port": 5521,
+  "setup": {
+    "python": "3.8+",
+    "gpu": false,
+    "commands": [
+      "pip install edge-tts",
+      "pip install flask",
+      "python server/edge_provider.py"
+    ],
+    "docs": "https://github.com/your-org/forreading-templates/blob/main/local/edge-tts.md"
+  },
+  "tags": ["cpu", "free", "multilingual", "easy", "beginner"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

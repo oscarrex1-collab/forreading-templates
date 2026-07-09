@@ -1,0 +1,25 @@
+{
+  "name": "playht",
+  "type": "cloud",
+  "displayName": "PlayHT",
+  "description": "800+ AI voices with voice cloning. Free tier available. Great for long-form content.",
+  "urls": {
+    "synthesize": "https://api.play.ht/api/v2/tts/stream",
+    "voices": "https://api.play.ht/api/v2/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "X-User-Id"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"text\":\"{text}\",\"voice\":\"{voice}\",\"quality\":\"medium\",\"output_format\":\"mp3\"}"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 30000,
+  "tags": ["premium", "multilingual", "cloning", "long-form"],
+  "pricing": "https://play.ht/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

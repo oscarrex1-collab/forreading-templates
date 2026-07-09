@@ -1,0 +1,20 @@
+{
+  "name": "cosyvoice",
+  "type": "local",
+  "displayName": "CosyVoice",
+  "description": "Alibaba's CosyVoice TTS. Excellent Chinese voice quality with emotion control. GPU recommended.",
+  "port": 5522,
+  "setup": {
+    "python": "3.10+",
+    "gpu": true,
+    "commands": [
+      "git clone https://github.com/FunAudioLLM/CosyVoice.git",
+      "cd CosyVoice && pip install -r requirements.txt",
+      "python server/cosyvoice_provider.py"
+    ],
+    "docs": "https://github.com/your-org/forreading-templates/blob/main/local/cosyvoice.md"
+  },
+  "tags": ["gpu", "neural", "chinese", "emotion", "open-source"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}
