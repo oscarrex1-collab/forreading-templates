@@ -1,71 +1,79 @@
 # ForReading Community Templates
 
-Plantillas de la comunidad para usar con la extension [ForReading](https://readingisforyou.com).
+Community-contributed TTS templates for the [ForReading](https://readingisforyou.com) extension.
 
-## Que es esto?
+---
 
-La extension ForReading tiene soporte para dos tipos de proveedores TTS externos:
+## What is this?
+
+ForReading supports two types of external TTS providers:
 
 ### Local providers
 
-Sidecars que corren en tu propia maquina. Cualquier servidor HTTP con 3 endpoints funciona:
+Sidecars running on your own machine. Any HTTP server with 3 endpoints works:
 
-| Endpoint | Metodo | Respuesta |
-|----------|--------|-----------|
+| Endpoint | Method | Response |
+|----------|--------|----------|
 | `/<name>/health` | GET | `{"ok":true, "voices_count":20, "device":"cuda"}` |
 | `/<name>/voices` | GET | `{"voices":[{"name":"zf_001","gender":"FEMALE"},...]}` |
-| `/<name>/synthesize` | POST | `{"text":"...","voice":"..."}` -> audio/mpeg |
+| `/<name>/synthesize` | POST | `{"text":"...","voice":"..."}` → audio/mpeg |
 
 ### Cloud providers
 
-APIs externas (ElevenLabs, OpenAI, etc.). Se configuran desde **Opciones > Plantillas personalizadas** en la extension.
+External APIs (ElevenLabs, OpenAI, etc.). Configure via **Options → Custom Templates** in the extension.
 
-## Como usar
+## How to use
 
-1. Navega [`local/`](local/) o [`cloud/`](cloud/)
-2. **Local**: copia el `.json` a tu carpeta `server/`. Arranca los sidecars con `server/launcher.bat`
-3. **Cloud**: abre Opciones en la extension > **+ Anadir plantilla** > pega los campos del JSON
+1. Browse [`local/`](local/) or [`cloud/`](cloud/)
+2. **Local**: copy the `.json` to your `server/` folder. Start sidecars with `server/launcher.bat`
+3. **Cloud**: open Options in the extension → **+ Add template** → paste the JSON fields
 
-## Contribuir
+## Contributing
 
-1. Fork este repo
-2. Crea tu template siguiendo [`schema.json`](schema.json)
-3. PR con descripcion clara
+1. Fork this repo
+2. Create your template following [`schema.json`](schema.json)
+3. Open a PR with a clear description
 
-## Templates incluidos (17)
+## Templates (17)
 
 ### Local (9)
-| Template | Voces | GPU | Destaca por |
-|----------|-------|-----|-------------|
-| [Kokoro](local/kokoro.json) | 50+ | Si | Calidad neural, multilengua |
-| [Edge TTS](local/edge-tts.json) | 300+ | No | Gratis, sin GPU, 100+ idiomas |
-| [CosyVoice](local/cosyvoice.json) | 30+ | Si | Voces chinas con emocion |
-| [F5-TTS](local/f5-tts.json) | ∞ | Si | Clonacion zero-shot (5s audio) |
-| [GPT-SoVITS](local/gpt-sovits.json) | ∞ | Si | Clonacion vocal china, #1 comunidad |
-| [XTTS](local/xtts.json) | ∞ | Si | 17 idiomas, clonacion 6s |
-| [Piper TTS](local/piper.json) | 100+ | No | Ultra-ligero, Raspberry Pi |
-| [MeloTTS](local/melo-tts.json) | 20+ | No | Ligero, 6 idiomas |
-| [ChatTTS](local/chattts.json) | 10 | Si | Conversacional natural |
+| Template | Voices | GPU | Best for |
+|----------|--------|-----|----------|
+| [Kokoro](local/kokoro.json) | 50+ | Yes | Neural quality, multilingual |
+| [Edge TTS](local/edge-tts.json) | 300+ | No | Free, no GPU, 100+ languages |
+| [CosyVoice](local/cosyvoice.json) | 30+ | Yes | Chinese voices with emotion |
+| [F5-TTS](local/f5-tts.json) | ∞ | Yes | Zero-shot cloning (5s audio) |
+| [GPT-SoVITS](local/gpt-sovits.json) | ∞ | Yes | Chinese voice cloning, #1 community |
+| [XTTS](local/xtts.json) | ∞ | Yes | 17 languages, 6s cloning |
+| [Piper TTS](local/piper.json) | 100+ | No | Ultra-lightweight, Raspberry Pi |
+| [MeloTTS](local/melo-tts.json) | 20+ | No | Lightweight, 6 languages |
+| [ChatTTS](local/chattts.json) | 10 | Yes | Natural-sounding dialogue |
 
 ### Cloud (8)
-| Template | Free tier | Destaca por |
-|----------|-----------|-------------|
-| [ElevenLabs](cloud/elevenlabs.json) | 10K/mes | Voces premium + clonacion |
-| [OpenAI TTS](cloud/openai-tts.json) | No | 6 voces ultra-naturales |
-| [PlayHT](cloud/playht.json) | Si | 800+ voces, long-form |
-| [Amazon Polly](cloud/amazon-polly.json) | 5M/mes | AWS, 60+ voces |
-| [Murf AI](cloud/murf.json) | 10min/mes | Calidad estudio |
-| [Deepgram](cloud/deepgram.json) | 500K/mes | Ultra-rapido, streaming |
-| [Cartesia](cloud/cartesia.json) | 100K/mes | Latencia sub-100ms |
-| [IBM Watson](cloud/ibm-watson.json) | 10K/mes | Enterprise, 30+ idiomas |
+| Template | Free tier | Best for |
+|----------|-----------|----------|
+| [ElevenLabs](cloud/elevenlabs.json) | 10K/mo | Premium voices + cloning |
+| [OpenAI TTS](cloud/openai-tts.json) | No | 6 ultra-natural voices |
+| [PlayHT](cloud/playht.json) | Yes | 800+ voices, long-form |
+| [Amazon Polly](cloud/amazon-polly.json) | 5M/mo | AWS, 60+ voices |
+| [Murf AI](cloud/murf.json) | 10min/mo | Studio quality |
+| [Deepgram](cloud/deepgram.json) | 500K/mo | Ultra-fast, streaming |
+| [Cartesia](cloud/cartesia.json) | 100K/mo | Sub-100ms latency |
+| [IBM Watson](cloud/ibm-watson.json) | 10K/mo | Enterprise, 30+ languages |
 
-## Formato
+## Format
 
-Todos los templates siguen [`schema.json`](schema.json). Dos tipos:
+All templates follow [`schema.json`](schema.json). Two types:
 
-- **`"type": "local"`** — require `port` y `setup.commands`
-- **`"type": "cloud"`** — requiere `urls.synthesize`, `auth`, y opcionalmente `requestFormat.bodyTemplate`
+- **`"type": "local"`** — requires `port` + `setup.commands`
+- **`"type": "cloud"`** — requires `urls.synthesize`, `auth`, optionally `requestFormat.bodyTemplate`
 
-## Licencia
+## License
 
-MIT — usa, modifica, comparte.
+MIT — use, modify, share.
+
+---
+
+## Español / 中文
+
+[README_es.md](README_es.md) | [README_zh.md](README_zh.md)
