@@ -1,0 +1,19 @@
+{
+  "name": "xtts",
+  "type": "local",
+  "displayName": "XTTS (Coqui)",
+  "description": "Coqui TTS successor. Voice cloning from 6-second sample. Multilingual: 17 languages. GPU recommended.",
+  "port": 5527,
+  "setup": {
+    "python": "3.10+",
+    "gpu": true,
+    "commands": [
+      "pip install TTS",
+      "python server/xtts_provider.py"
+    ],
+    "docs": "https://github.com/coqui-ai/TTS"
+  },
+  "tags": ["gpu", "neural", "cloning", "multilingual", "open-source"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

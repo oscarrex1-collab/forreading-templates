@@ -1,0 +1,26 @@
+{
+  "name": "amazon-polly",
+  "type": "cloud",
+  "displayName": "Amazon Polly",
+  "description": "AWS neural TTS. 60+ voices in 30+ languages. Free tier: 5M chars/month for 12 months.",
+  "urls": {
+    "synthesize": "https://polly.{region}.amazonaws.com/v1/speech",
+    "voices": "https://polly.{region}.amazonaws.com/v1/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "X-Amz-Security-Token"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"OutputFormat\":\"mp3\",\"Text\":\"{text}\",\"VoiceId\":\"{voice}\",\"Engine\":\"neural\"}",
+    "voiceParam": "voice"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 15000,
+  "tags": ["premium", "multilingual", "aws", "free-tier"],
+  "pricing": "https://aws.amazon.com/polly/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

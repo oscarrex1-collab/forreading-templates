@@ -1,0 +1,25 @@
+{
+  "name": "deepgram",
+  "type": "cloud",
+  "displayName": "Deepgram TTS",
+  "description": "Ultra-low latency TTS. Real-time streaming. 40+ voices. Free tier: 500K chars/month.",
+  "urls": {
+    "synthesize": "https://api.deepgram.com/v1/speak",
+    "voices": "https://api.deepgram.com/v1/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "Authorization"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"text\":\"{text}\"}"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 10000,
+  "tags": ["premium", "fast", "streaming", "english", "free-tier"],
+  "pricing": "https://deepgram.com/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

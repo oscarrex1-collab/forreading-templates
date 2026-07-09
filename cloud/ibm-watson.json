@@ -1,0 +1,25 @@
+{
+  "name": "ibm-watson",
+  "type": "cloud",
+  "displayName": "IBM Watson TTS",
+  "description": "Enterprise-grade neural TTS. 30+ languages. Free tier: 10K chars/month. SSML support.",
+  "urls": {
+    "synthesize": "https://api.{region}.text-to-speech.watson.cloud.ibm.com/instances/{instance}/v1/synthesize",
+    "voices": "https://api.{region}.text-to-speech.watson.cloud.ibm.com/instances/{instance}/v1/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "Authorization"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"text\":\"{text}\",\"voice\":\"{voice}\",\"accept\":\"audio/mp3\"}"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 20000,
+  "tags": ["premium", "enterprise", "ssml", "multilingual", "free-tier"],
+  "pricing": "https://www.ibm.com/products/text-to-speech",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "chattts",
+  "type": "local",
+  "displayName": "ChatTTS",
+  "description": "Conversational TTS optimized for dialogue. Natural prosody and expressiveness. Great for multi-character novels.",
+  "port": 5528,
+  "setup": {
+    "python": "3.9+",
+    "gpu": true,
+    "commands": [
+      "git clone https://github.com/2noise/ChatTTS.git",
+      "cd ChatTTS && pip install -r requirements.txt",
+      "python server/chattts_provider.py"
+    ],
+    "docs": "https://github.com/2noise/ChatTTS"
+  },
+  "tags": ["gpu", "neural", "dialogue", "chinese", "english", "open-source"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

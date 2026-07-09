@@ -1,0 +1,20 @@
+{
+  "name": "gpt-sovits",
+  "type": "local",
+  "displayName": "GPT-SoVITS",
+  "description": "Chinese TTS with excellent voice cloning. 5-second sample → natural voice. Very popular in Chinese web novel community.",
+  "port": 5524,
+  "setup": {
+    "python": "3.9+",
+    "gpu": true,
+    "commands": [
+      "git clone https://github.com/RVC-Boss/GPT-SoVITS.git",
+      "cd GPT-SoVITS && pip install -r requirements.txt",
+      "python server/gpt_sovits_provider.py"
+    ],
+    "docs": "https://github.com/RVC-Boss/GPT-SoVITS"
+  },
+  "tags": ["gpu", "neural", "chinese", "cloning", "open-source", "popular"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

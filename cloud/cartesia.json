@@ -1,0 +1,25 @@
+{
+  "name": "cartesia",
+  "type": "cloud",
+  "displayName": "Cartesia Sonic",
+  "description": "Ultra-low latency TTS (sub-100ms). Streaming-first architecture. 30+ voices. Free tier: 100K chars/month.",
+  "urls": {
+    "synthesize": "https://api.cartesia.ai/tts/bytes",
+    "voices": "https://api.cartesia.ai/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"model_id\":\"sonic-multilingual\",\"transcript\":\"{text}\",\"voice\":{\"mode\":\"id\",\"id\":\"{voice}\"},\"output_format\":{\"container\":\"mp3\",\"encoding\":\"mp3\",\"sample_rate\":22050}}"
+  },
+  "responseFormat": {
+    "audioField": "raw"
+  },
+  "timeout": 10000,
+  "tags": ["premium", "fast", "streaming", "english", "multilingual", "free-tier"],
+  "pricing": "https://cartesia.ai/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

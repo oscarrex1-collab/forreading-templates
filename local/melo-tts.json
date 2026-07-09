@@ -1,0 +1,20 @@
+{
+  "name": "melo-tts",
+  "type": "local",
+  "displayName": "MeloTTS",
+  "description": "Lightweight multilingual TTS by MyShell.ai. Supports EN, ZH, JA, KR, FR, ES. CPU-friendly with good quality.",
+  "port": 5526,
+  "setup": {
+    "python": "3.9+",
+    "gpu": false,
+    "commands": [
+      "git clone https://github.com/myshell-ai/MeloTTS.git",
+      "cd MeloTTS && pip install -r requirements.txt",
+      "python server/melo_provider.py"
+    ],
+    "docs": "https://github.com/myshell-ai/MeloTTS"
+  },
+  "tags": ["cpu", "multilingual", "lightweight", "open-source", "chinese", "english"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

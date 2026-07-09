@@ -1,0 +1,20 @@
+{
+  "name": "f5-tts",
+  "type": "local",
+  "displayName": "F5-TTS",
+  "description": "Flow-matching TTS with voice cloning. Zero-shot: clone any voice with 5 seconds of audio. Excellent quality.",
+  "port": 5523,
+  "setup": {
+    "python": "3.10+",
+    "gpu": true,
+    "commands": [
+      "git clone https://github.com/SWivid/F5-TTS.git",
+      "cd F5-TTS && pip install -r requirements.txt",
+      "python server/f5tts_provider.py"
+    ],
+    "docs": "https://github.com/SWivid/F5-TTS"
+  },
+  "tags": ["gpu", "neural", "cloning", "multilingual", "open-source"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}

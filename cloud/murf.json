@@ -1,0 +1,25 @@
+{
+  "name": "murf",
+  "type": "cloud",
+  "displayName": "Murf AI",
+  "description": "Studio-quality AI voices. 120+ voices in 20 languages. Free tier: 10 mins/month.",
+  "urls": {
+    "synthesize": "https://api.murf.ai/v1/speech/generate",
+    "voices": "https://api.murf.ai/v1/voices"
+  },
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key"
+  },
+  "requestFormat": {
+    "bodyTemplate": "{\"text\":\"{text}\",\"voiceId\":\"{voice}\",\"format\":\"MP3\"}"
+  },
+  "responseFormat": {
+    "audioField": "audioFile"
+  },
+  "timeout": 30000,
+  "tags": ["premium", "studio-quality", "english", "free-tier"],
+  "pricing": "https://murf.ai/pricing",
+  "author": "ForReading",
+  "version": "1.0.0"
+}

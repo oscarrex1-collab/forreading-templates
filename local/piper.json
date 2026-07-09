@@ -1,0 +1,20 @@
+{
+  "name": "piper",
+  "type": "local",
+  "displayName": "Piper TTS",
+  "description": "Ultra-fast CPU TTS. Runs on a Raspberry Pi. 100+ voices, 30+ languages. Perfect for low-resource machines.",
+  "port": 5525,
+  "setup": {
+    "python": "3.8+",
+    "gpu": false,
+    "commands": [
+      "pip install piper-tts",
+      "pip install flask",
+      "python server/piper_provider.py"
+    ],
+    "docs": "https://github.com/rhasspy/piper"
+  },
+  "tags": ["cpu", "fast", "lightweight", "raspberry-pi", "multilingual", "open-source"],
+  "author": "ForReading",
+  "version": "1.0.0"
+}
